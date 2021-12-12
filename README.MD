@@ -52,7 +52,7 @@ Desenvolvimento de aplicativo de catálogo usando [Spring Boot](https://glysns.g
 
 ## Modelo conceitual
 
-![Modelo conceitual](dscatalog/backend/src/main/resources/static/DSCatalog Modelo conceitual.png)
+![Modelo conceitual](backend/src/main/resources/static/DSCatalog%20Modelo%20conceitual.png)
 
 ## Testes manuais no postman
 
