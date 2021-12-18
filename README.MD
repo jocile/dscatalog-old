@@ -54,48 +54,7 @@ Desenvolvimento de aplicativo de catálogo usando [Spring Boot](https://glysns.g
 
 ![Modelo conceitual](backend/src/main/resources/static/DSCatalog%20Modelo%20conceitual.png)
 
-## Testes manuais no postman
+## Testes manuais
 
-Busca paginada de clientes
-
-```
-GET /clients?page=0&linesPerPage=6&direction=ASC&orderBy=name
-```
-
-Busca de cliente por id
-
-```
-GET /clients/1
-```
-
-Inserção de novo cliente
-
-```
-POST /clients
-{
-  "name": "Maria Silva",
-  "cpf": "12345678901",
-  "income": 6500.0,
-  "birthDate": "1994-07-20T10:30:00Z",
-  "children": 2
-}
-```
-
-Atualização de cliente
-
-```
-PUT /clients/1
-{
-  "name": "Maria Silvaaa",
-  "cpf": "12345678901",
-  "income": 6500.0,
-  "birthDate": "1994-07-20T10:30:00Z",
-  "children": 2
-}
-```
-
-Deleção de cliente
-
-```
-DELETE /clients/1
-```
+- A API pode ser acessada no postman
+- A API pode ser testada pelo Swagger acessando o navegador no endereço: <http://localhost:8080/swagger-ui>
