@@ -1,13 +1,20 @@
 package com.devsuperior.dscatalog.dto;
 
-import java.io.Serializable;
-
 import com.devsuperior.dscatalog.entities.Category;
-
+import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+/**
+ * Objeto DTO - Data Transfer Object -
+ * access the entity,
+ * used to load only the necessary data.
+ *
+ * @param entity
+ * @see com.devsuperior.dscatalog.resources.CategoryResource CategoryResource
+ */
 
 @NoArgsConstructor
 @AllArgsConstructor
