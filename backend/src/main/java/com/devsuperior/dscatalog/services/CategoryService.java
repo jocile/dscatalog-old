@@ -50,4 +50,18 @@ public class CategoryService {
     );
     return new CategoryDTO(entity);
   }
+
+  /**
+   * Insert a new category in the repository
+   *
+   * @param category
+   * @return entity Category DTO
+   */
+  @Transactional
+  public CategoryDTO insert(CategoryDTO dto) {
+    Category entity = new Category();
+    entity.setName(dto.getName());
+    entity = repository.save(entity);
+    return new CategoryDTO(entity);
+  }
 }
