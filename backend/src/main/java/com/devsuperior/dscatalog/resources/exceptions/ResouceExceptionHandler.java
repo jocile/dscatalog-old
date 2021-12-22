@@ -1,6 +1,6 @@
 package com.devsuperior.dscatalog.resources.exceptions;
 
-import com.devsuperior.dscatalog.services.exceptions.EntityNotFoundExceptions;
+import com.devsuperior.dscatalog.services.exceptions.ResourceNotFoundExceptions;
 import java.time.Instant;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 /**
  * This class intercepts exceptions and performs custom handling
+ *
+ *  @author Nelio Alves acenelio
  */
 
 @ControllerAdvice
@@ -22,9 +24,9 @@ public class ResouceExceptionHandler {
    * @param request Http Servlet Request
    * @return Standard Error
    */
-  @ExceptionHandler(EntityNotFoundExceptions.class)
+  @ExceptionHandler(ResourceNotFoundExceptions.class)
   public ResponseEntity<StandardError> entityNotFound(
-    EntityNotFoundExceptions e,
+    ResourceNotFoundExceptions e,
     HttpServletRequest request
   ) {
     StandardError err = new StandardError();

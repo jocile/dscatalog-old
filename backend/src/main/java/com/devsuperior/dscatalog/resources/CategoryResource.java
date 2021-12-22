@@ -15,16 +15,20 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 /**
- * Classe controller using documentation with OpenApi 3 implemented with Swagger
+ * Controller class
+ *  have been added documentation with OpenApi 3 implemented with Swagger
  *
  * To interact with the API run Spring Boot and go to:
  * <a href="http://localhost:8080/swagger-ui/index.html">swagger-ui</a>
+ *
+ * @author Nelio Alves acenelio
  */
 
 @RestController
@@ -50,20 +54,35 @@ public class CategoryResource {
   }
 
   /**
-   * Category search by id
+   * Search category by identified number
    *
    * @param id identifier
    * @return Category
    */
   @GetMapping(value = "/{id}")
   @Operation(
-    summary = "Category search by identifier",
+    summary = "search category by identified number",
     description = "Receives the identifier and returns the corresponding category",
-    tags = { "categories" }
+    tags = { "categories" },
+    responses = {
+      @ApiResponse(
+        description = "Success! The category was found!",
+        responseCode = "200",
+        content = @Content(
+          mediaType = "application/json",
+          schema = @Schema(implementation = Category.class)
+        )
+      ),
+      @ApiResponse(
+        description = "Error! Identifier number not found!",
+        responseCode = "404",
+        content = @Content
+      ),
+    }
   )
   public ResponseEntity<CategoryDTO> findById(
     @Parameter(
-      description = "identifier number",
+      description = "Category identifier number",
       required = true
     ) @PathVariable Long id
   ) {
@@ -84,12 +103,9 @@ public class CategoryResource {
     tags = { "categories" },
     responses = {
       @ApiResponse(
-        description = "Success insert category",
+        description = "Success insert new category name",
         responseCode = "201",
-        content = @Content(
-          mediaType = "application/json",
-          schema = @Schema(implementation = Category.class)
-        )
+        content = @Content(mediaType = "application/json")
       ),
       @ApiResponse(
         description = "Category name error",
@@ -106,5 +122,44 @@ public class CategoryResource {
       .buildAndExpand(dto.getId())
       .toUri();
     return ResponseEntity.created(uri).body(dto);
+  }
+
+  /**
+   * Update the category and return confirmation response
+   *
+   * @param  category Request Body with category name
+   * @return confirmation status response with created and location header
+   */
+  @PutMapping(value = "/{id}")
+  @Operation(
+    summary = "Update the category",
+    description = "Update the category and return the updated",
+    tags = { "categories" },
+    responses = {
+      @ApiResponse(
+        description = "Success updade category",
+        responseCode = "200",
+        content = @Content(
+          mediaType = "application/json",
+          schema = @Schema(implementation = Category.class)
+        )
+      ),
+      @ApiResponse(
+        description = "Category identifier not found",
+        responseCode = "400",
+        content = @Content
+      ),
+    }
+  )
+  public ResponseEntity<CategoryDTO> update(
+    @Parameter(
+      name = "id",
+      description = "Category identifier number",
+      required = true
+    ) @PathVariable Long id,
+    @RequestBody CategoryDTO dto
+  ) {
+    dto = service.update(id, dto);
+    return ResponseEntity.ok().body(dto);
   }
 }
