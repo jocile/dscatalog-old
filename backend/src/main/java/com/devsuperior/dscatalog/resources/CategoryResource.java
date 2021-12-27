@@ -12,6 +12,7 @@ import java.net.URI;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,8 +28,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
  *
  * To interact with the API run Spring Boot and go to:
  * <a href="http://localhost:8080/swagger-ui/index.html">swagger-ui</a>
- *
- * @author Nelio Alves acenelio
  */
 
 @RestController
@@ -44,6 +43,7 @@ public class CategoryResource {
    */
   @GetMapping
   @Operation(
+    operationId = "findAll",
     summary = "Category list",
     description = "List all categories",
     tags = { "categories" }
@@ -61,6 +61,7 @@ public class CategoryResource {
    */
   @GetMapping(value = "/{id}")
   @Operation(
+    operationId = "findById",
     summary = "search category by identified number",
     description = "Receives the identifier and returns the corresponding category",
     tags = { "categories" },
@@ -161,5 +162,40 @@ public class CategoryResource {
   ) {
     dto = service.update(id, dto);
     return ResponseEntity.ok().body(dto);
+  }
+
+  /**
+   * Update the category and return confirmation response
+   *
+   * @param  category Request Body with category name
+   * @return confirmation status response with created and location header
+   */
+  @DeleteMapping(value = "/{id}")
+  @Operation(
+    summary = "Delete the category",
+    description = "Delete the category and return the updated",
+    tags = { "categories" },
+    responses = {
+      @ApiResponse(
+        description = "The category deleted successfully",
+        responseCode = "204",
+        content = @Content
+      ),
+      @ApiResponse(
+        description = "Category identifier not found",
+        responseCode = "404",
+        content = @Content
+      ),
+    }
+  )
+  public ResponseEntity<Void> delete(
+    @Parameter(
+      name = "id",
+      description = "Category identifier number",
+      required = true
+    ) @PathVariable Long id
+  ) {
+    service.delete(id);
+    return ResponseEntity.noContent().build();
   }
 }
