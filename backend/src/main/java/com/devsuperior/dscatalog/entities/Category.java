@@ -1,10 +1,14 @@
 package com.devsuperior.dscatalog.entities;
 
 import java.io.Serializable;
+import java.time.Instant;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -18,7 +22,6 @@ import lombok.Setter;
  */
 @EqualsAndHashCode
 @Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -30,5 +33,28 @@ public class Category implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @Setter
   private String name;
+
+  @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+  private Instant createdAt;
+
+  @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+  private Instant updatedAt;
+
+  /**
+   * This method records the UTC time the category was created.
+   */
+  @PrePersist
+  public void prePersist() {
+    createdAt = Instant.now();
+  }
+
+  /**
+   * This method records the UTC time the category was updated.
+   */
+  @PreUpdate
+  public void preUpdate() {
+    updatedAt = Instant.now();
+  }
 }
