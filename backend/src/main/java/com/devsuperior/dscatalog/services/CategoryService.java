@@ -12,6 +12,8 @@ import javax.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,9 +29,22 @@ public class CategoryService {
   /**
    * Converts the category list to a dto list;
    * use map stream (lambda) to transform elements;
-   * Returns a list of dto categories.
    *
-   * @return Category list
+   * @param pageRequest
+   * @return Category paging results list
+   */
+  @Transactional(readOnly = true)
+  public Page<CategoryDTO> findAllPaged(PageRequest pageRequest) {
+    Page<Category> list = repository.findAll(pageRequest);
+    return list.map(x -> new CategoryDTO(x));
+  }
+
+  /**
+   * Converts the category list to a dto list;
+   * use map stream (lambda) to transform elements;
+   *
+   * @obsolete since it was replaced by findAllPaged
+   * @return Category list of dto categories.
    */
   @Transactional(readOnly = true)
   public List<CategoryDTO> findAll() {
@@ -93,7 +108,7 @@ public class CategoryService {
    *
    * @param id
    * @throws ResourceNotFoundExceptions if the category identifier not found
-   * @throws Resource if database integrity is violated
+   * @throws DatabaseExceptions if database integrity is violated
    */
   public void delete(Long id) {
     try {
