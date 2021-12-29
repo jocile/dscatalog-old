@@ -8,11 +8,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * Objeto DTO - Data Transfer Object -
- * access the entity,
+ * Object DTO - Data Transfer Object -
+ * access the category entity,
  * used to load only the necessary data.
  *
- * @param entity
+ * @param entity category
  * @see com.devsuperior.dscatalog.resources.CategoryResource CategoryResource
  */
 
@@ -26,6 +26,12 @@ public class CategoryDTO implements Serializable {
   private Long id;
   private String name;
 
+  /**
+   * this constructor creates a data transfer object
+   *  from a category entity
+   *
+   * @param entity category
+   */
   public CategoryDTO(Category entity) {
     this.id = entity.getId();
     this.name = entity.getName();
