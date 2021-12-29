@@ -44,7 +44,7 @@ public class ProductDTO implements Serializable {
    * @param imgUrl
    * @param date
    */
-  public ProdutcDTO(
+  public ProductDTO(
     Long id,
     String name,
     String description,
@@ -66,7 +66,7 @@ public class ProductDTO implements Serializable {
    *
    * @param entity product
    */
-  public ProdutcDTO(Product entity) {
+  public ProductDTO(Product entity) {
     this.id = entity.getId();
     this.name = entity.getName();
     this.description = entity.getDescription();
@@ -82,7 +82,7 @@ public class ProductDTO implements Serializable {
    * @param entity product
    * @param categories list
    */
-  public ProdutcDTO(Product entity, Set<Category> categories) {
+  public ProductDTO(Product entity, Set<Category> categories) {
     this(entity);
     categories.forEach(cat -> this.categories.add(new CategoryDTO(cat)));
   }
