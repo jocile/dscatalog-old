@@ -70,7 +70,7 @@ Catalog application development with H2 in-memory database and studying in Bootc
 - DTO Standard
 - full CRUD
 - Exception handling
-- Postman (collections, environments)
+- Swagger UI (Open API3 collections, environments)
 - Audit data
 - Data pagination
 - Associations between entities (N-N)
@@ -94,13 +94,14 @@ The following tools were used in this project:
 - [Java 11](https://docs.oracle.com/en/java/javase/11/)
 - [Spring Boot](https://glysns.gitbook.io/springframework/)
 - [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.5.6/reference/htmlsingle/#boot-features-jpa-and-spring-data)
+- [Swagger implementing springdoc-openapi](https://springdoc.org/)
 - [React](https://pt-br.reactjs.org/) (to implement)
 - [React Native](https://reactnative.dev/) (to implement)
 - [TypeScript](https://www.typescriptlang.org/) (to implement)
 
 ## :white_check_mark: Requirements
 
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
+Before starting :checkered_flag:, you need to have [Java JDK11](https://www.oracle.com/java/technologies/downloads/#java11), [Git](https://git-scm.com) and [Maven](https://maven.apache.org/download.cgi) installed.
 
 ## :checkered_flag: Starting
 
@@ -110,7 +111,6 @@ $ git clone https://github.com/jocile/dscatalog
 
 # Access
 $ cd dscatalog
-
 
 # The server will initialize in the
 <http://localhost:8080/swagger-ui/index.html>
@@ -142,7 +142,7 @@ Made with :heart: by <a href="https://github.com/jocile" target="_blank">Jocile<
 :heavy_check_mark: [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/);\
 :heavy_check_mark: [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/);\
 :heavy_check_mark: [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/);\
-:heavy_check_mark: [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/);\
+:heavy_check_mark: [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/);
 
 - <a href="http://www.youtube.com/watch?feature=player_embedded&v=b8uLFfzcVQ8
   " target="_blank"><img src="http://img.youtube.com/vi/b8uLFfzcVQ8/0.jpg" 
