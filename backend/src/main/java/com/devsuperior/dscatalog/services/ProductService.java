@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,12 +36,12 @@ public class ProductService {
    * Converts the product list to a dto list;
    * use map stream (lambda) to transform elements;
    *
-   * @param pageRequest
+   * @param Pageable
    * @return Product paging results list
    */
   @Transactional(readOnly = true)
-  public Page<ProductDTO> findAllPaged(PageRequest pageRequest) {
-    Page<Product> list = repository.findAll(pageRequest);
+  public Page<ProductDTO> findAllPaged(Pageable pageable) {
+    Page<Product> list = repository.findAll(pageable);
     return list.map(x -> new ProductDTO(x));
   }
 

@@ -5,14 +5,15 @@ import com.devsuperior.dscatalog.entities.Product;
 import com.devsuperior.dscatalog.services.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import java.net.URI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +22,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -43,9 +43,8 @@ public class ProductResource {
    * Paged list of all products
    *
    * @param page optional page number
-   * @param linesPerPage optional number of items per page
-   * @param orderBy optional order of page items
-   * @param direction optional ascending or descending order of page items
+   * @param size optional number of items per page
+   * @param sort optional order of page items
    * @return Product list
    */
   @GetMapping
@@ -54,23 +53,32 @@ public class ProductResource {
     description = "Paged list of all products",
     tags = { "products" }
   )
-  public ResponseEntity<Page<ProductDTO>> findAll(
-    @RequestParam(value = "page", defaultValue = "0") Integer page,
-    @RequestParam(
-      value = "linesPerPage",
-      defaultValue = "12"
-    ) Integer linesPerPage,
-    @RequestParam(value = "direction", defaultValue = "ASC") String direction,
-    @RequestParam(value = "orderBy", defaultValue = "name") String orderBy
-  ) {
-    PageRequest pageRequest = PageRequest.of(
-      page,
-      linesPerPage,
-      Direction.valueOf(direction),
-      orderBy
-    );
-
-    Page<ProductDTO> list = service.findAllPaged(pageRequest);
+  @Parameter(
+    in = ParameterIn.QUERY,
+    description = "Zero-based page index (0..N)",
+    name = "page",
+    content = @Content(schema = @Schema(type = "integer", defaultValue = "0"))
+  )
+  @Parameter(
+    in = ParameterIn.QUERY,
+    description = "The size of the page to be returned",
+    name = "size",
+    content = @Content(schema = @Schema(type = "integer", defaultValue = "10"))
+  )
+  @Parameter(
+    in = ParameterIn.QUERY,
+    description = "Sorting criteria in the format: property(,asc|desc). " +
+    "Default sort order is ascending. " +
+    "Multiple sort criteria are supported.",
+    name = "sort",
+    content = @Content(
+      array = @ArraySchema(
+        schema = @Schema(type = "string", defaultValue = "name")
+      )
+    )
+  )
+  public ResponseEntity<Page<ProductDTO>> findAll(Pageable pageable) {
+    Page<ProductDTO> list = service.findAllPaged(pageable);
 
     return ResponseEntity.ok().body(list);
   }

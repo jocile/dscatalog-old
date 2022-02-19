@@ -149,4 +149,6 @@ Made with :heart: by <a href="https://github.com/jocile" target="_blank">Jocile<
 
 &#xa0;
 
-<a href="#top">Back to top</a>
+<a href="#top">Back to top :arrow_heading_up:</a>
+
+---
