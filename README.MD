@@ -53,27 +53,27 @@ Catalog application development with H2 in-memory database and studying in Bootc
 
 ## Developed activities:
 
-- Create Spring Boot project
-- Create Git monorepo
-- Organize the project in layers
-  - REST controller
-  - Service
-  - Data access (Repository)
-- Create entities
-- Configure project test profile
-- Database seeding
-- Create REST web services
-  - @PathVariable route parameters
-  - Request parameters @RequestParam
-  - Request body @RequestBody
-  - Response from ResponseEntity<T> request
-- DTO Standard
-- full CRUD
-- Exception handling
-- Swagger UI (Open API3 collections, environments)
-- Audit data
-- Data pagination
-- Associations between entities (N-N)
+:heavy_check_mark: Create Spring Boot project;\
+:heavy_check_mark: Create Git monorepo;\
+:heavy_check_mark: Organize the project in layers;\
+ :heavy_check_mark: REST controller;\
+ :heavy_check_mark: Service;\
+ :heavy_check_mark: Data access (Repository);\
+:heavy_check_mark: Create entities;\
+:construction: Configure project test profile;\
+:heavy_check_mark: Database seeding;\
+:heavy_check_mark: Create REST web services;\
+ :heavy_check_mark: @PathVariable route parameters;\
+ :heavy_check_mark: Request parameters @RequestParam;\
+ :heavy_check_mark: Request body @RequestBody;\
+ :heavy_check_mark: Response from ResponseEntity<T> request;\
+:heavy_check_mark: DTO Standard;\
+:heavy_check_mark: full CRUD;\
+:heavy_check_mark: Exception handling;\
+:heavy_check_mark: Swagger UI (Open API3 collections, environments);\
+:heavy_check_mark: Audit data;\
+:heavy_check_mark: Data pagination;\
+:heavy_check_mark: Associations between entities (N-N);
 
 ## :sparkles: Features
 
@@ -85,19 +85,19 @@ Catalog application development with H2 in-memory database and studying in Bootc
 :heavy_check_mark: Resource search by id;\
 :heavy_check_mark: Insert new resource;\
 :heavy_check_mark: Update feature;\
-:heavy_check_mark: Delete resource;\
+:heavy_check_mark: Delete resource;
 
 ## :rocket: Technologies
 
 The following tools were used in this project:
 
-- [Java 11](https://docs.oracle.com/en/java/javase/11/)
-- [Spring Boot](https://glysns.gitbook.io/springframework/)
-- [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.5.6/reference/htmlsingle/#boot-features-jpa-and-spring-data)
-- [Swagger implementing springdoc-openapi](https://springdoc.org/)
-- [React](https://pt-br.reactjs.org/) (to implement)
-- [React Native](https://reactnative.dev/) (to implement)
-- [TypeScript](https://www.typescriptlang.org/) (to implement)
+:heavy_check_mark: [Java 11](https://docs.oracle.com/en/java/javase/11/);\
+:heavy_check_mark: [Spring Boot](https://glysns.gitbook.io/springframework/);\
+:heavy_check_mark: [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.5.6/reference/htmlsingle/#boot-features-jpa-and-spring-data);\
+:heavy_check_mark: [Swagger implementing springdoc-openapi](https://springdoc.org/);\
+:construction: [React](https://pt-br.reactjs.org/);\
+:construction: [React Native](https://reactnative.dev/);\
+:construction: [TypeScript](https://www.typescriptlang.org/);
 
 ## :white_check_mark: Requirements
 
@@ -110,19 +110,14 @@ Before starting :checkered_flag:, you need to have [Java JDK11](https://www.orac
 $ git clone https://github.com/jocile/dscatalog
 
 # Access
-$ cd dscatalog
-
-# The server will initialize in the
-<http://localhost:8080/swagger-ui/index.html>
-```
-
-<!--
-# Install dependencies
-$ yarn
+$ cd dscatalog/backend
 
 # Run the project
-$ yarn start
--->
+$ ./mvnw spring-boot:run
+
+# The server will initialize in the browser
+<http://localhost:8080/swagger-ui/index.html>
+```
 
 ## :memo: License
 
@@ -132,17 +127,17 @@ Made with :heart: by <a href="https://github.com/jocile" target="_blank">Jocile<
 
 ## :rocket: References
 
-:heavy_check_mark: [DSCatalog Github](https://github.com/devsuperior/dscatalog-resources);\
-:heavy_check_mark: [DSCatalog Figma](https://www.figma.com/file/1n0aifcfatWv9ozp16XCrq/DSCatalog-Bootcamp);\
-:heavy_check_mark: [Official Apache Maven documentation](https://maven.apache.org/guides/index.html);\
-:heavy_check_mark: [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.4.12/maven-plugin/reference/html/);\
-:heavy_check_mark: [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.4.12/maven-plugin/reference/html/#build-image);\
-:heavy_check_mark: [Spring Web](https://docs.spring.io/spring-boot/docs/2.5.6/reference/htmlsingle/#boot-features-developing-web-applications);\
-:heavy_check_mark: [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.5.6/reference/htmlsingle/#boot-features-jpa-and-spring-data);\
-:heavy_check_mark: [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/);\
-:heavy_check_mark: [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/);\
-:heavy_check_mark: [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/);\
-:heavy_check_mark: [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/);
+:link: [DSCatalog Github](https://github.com/devsuperior/dscatalog-resources);\
+:link: [DSCatalog Figma](https://www.figma.com/file/1n0aifcfatWv9ozp16XCrq/DSCatalog-Bootcamp);\
+:link: [Official Apache Maven documentation](https://maven.apache.org/guides/index.html);\
+:link: [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.4.12/maven-plugin/reference/html/);\
+:link: [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.4.12/maven-plugin/reference/html/#build-image);\
+:link: [Spring Web](https://docs.spring.io/spring-boot/docs/2.5.6/reference/htmlsingle/#boot-features-developing-web-applications);\
+:link: [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.5.6/reference/htmlsingle/#boot-features-jpa-and-spring-data);\
+:link: [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/);\
+:link: [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/);\
+:link: [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/);\
+:link: [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/);
 
 - <a href="http://www.youtube.com/watch?feature=player_embedded&v=b8uLFfzcVQ8
   " target="_blank"><img src="http://img.youtube.com/vi/b8uLFfzcVQ8/0.jpg" 
