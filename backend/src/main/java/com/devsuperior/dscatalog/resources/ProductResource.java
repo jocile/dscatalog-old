@@ -45,7 +45,8 @@ public class ProductResource {
    * @param page optional page number
    * @param size optional number of items per page
    * @param sort optional order of page items
-   * @return Product list
+   * @param direction optional ascending or descending order of page items
+   * @return Product list of all products page
    */
   @GetMapping
   @Operation(
