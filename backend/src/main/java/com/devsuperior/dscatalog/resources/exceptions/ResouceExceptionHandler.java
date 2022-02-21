@@ -1,6 +1,6 @@
 package com.devsuperior.dscatalog.resources.exceptions;
 
-import com.devsuperior.dscatalog.services.exceptions.DatabaseExceptions;
+import com.devsuperior.dscatalog.services.exceptions.DatabaseException;
 import com.devsuperior.dscatalog.services.exceptions.ResourceNotFoundExceptions;
 import java.time.Instant;
 import javax.servlet.http.HttpServletRequest;
@@ -44,12 +44,12 @@ public class ResouceExceptionHandler {
    *
    * @param e Database Exception
    * @param request Http Servlet Request
-   * @exception DatabaseExceptions integrity exception
+   * @exception DatabaseException integrity exception
    * @return Standard Error for database integrity error
    */
-  @ExceptionHandler(DatabaseExceptions.class)
+  @ExceptionHandler(DatabaseException.class)
   public ResponseEntity<StandardError> database(
-    DatabaseExceptions e,
+    DatabaseException e,
     HttpServletRequest request
   ) {
     HttpStatus status = HttpStatus.BAD_REQUEST;

@@ -3,7 +3,7 @@ package com.devsuperior.dscatalog.services;
 import com.devsuperior.dscatalog.dto.CategoryDTO;
 import com.devsuperior.dscatalog.entities.Category;
 import com.devsuperior.dscatalog.repositories.CategoryRepository;
-import com.devsuperior.dscatalog.services.exceptions.DatabaseExceptions;
+import com.devsuperior.dscatalog.services.exceptions.DatabaseException;
 import com.devsuperior.dscatalog.services.exceptions.ResourceNotFoundExceptions;
 import java.util.List;
 import java.util.Optional;
@@ -108,7 +108,7 @@ public class CategoryService {
    *
    * @param id
    * @throws ResourceNotFoundExceptions if the category identifier not found
-   * @throws DatabaseExceptions if database integrity is violated
+   * @throws DatabaseException if database integrity is violated
    */
   public void delete(Long id) {
     try {
@@ -116,7 +116,7 @@ public class CategoryService {
     } catch (EmptyResultDataAccessException e) {
       throw new ResourceNotFoundExceptions("Id not found " + id);
     } catch (DataIntegrityViolationException e) {
-      throw new DatabaseExceptions("Integrity violation");
+      throw new DatabaseException("Integrity violation");
     }
   }
 }
