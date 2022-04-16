@@ -5,6 +5,7 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -75,6 +76,25 @@ public class ProductResourceTests {
       .when(service)
       .delete(nonExistingId);
     doThrow(DatabaseException.class).when(service).delete(dependentId);
+  }
+
+  @Test
+  public void deleteShouldReturnNoContentWhenIdExists() throws Exception {
+    ResultActions result = mockMvc.perform(
+      delete("/products/{id}", existingId).accept(MediaType.APPLICATION_JSON)
+    );
+
+    result.andExpect(status().isNoContent());
+  }
+
+  @Test
+  public void deleteShouldReturnNoContentWhenIdDoesNotExists()
+    throws Exception {
+    ResultActions result = mockMvc.perform(
+      delete("/products/{id}", nonExistingId).accept(MediaType.APPLICATION_JSON)
+    );
+
+    result.andExpect(status().isNotFound());
   }
 
   @Test
